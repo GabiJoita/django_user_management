@@ -1,30 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY_BLOG</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
     <!-- Navigation Bar -->
-     <nav class="navbar navbar-expand-lg bg-secondary">
+    <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">WELCOME</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">MY_BLOG</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- Link to Home page -->
                     <li class="nav-item">
-                        <!-- Changed 'home' to root URL '/' -->
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
+                    <!-- Additional navigation links can be added here -->
                     <li class="nav-item">
-                        <!-- Ensure 'link' is updated to a valid URL -->
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
@@ -32,22 +34,22 @@
         </div>
     </nav>
 
-    <!-- Background Image with Form on Left -->
-    <div style="background-image: url('{% static 'site.jpg' %}'); background-size: cover; height: 800px;">
+    <!-- Background Image Section -->
+    <div style="background-image: url('{% static 'site.jpg' %}'); background-size: cover; height: 100vh; display: flex; align-items: center;">
         <div class="container">
-            <div class="row">
-                <!-- Form placed on the left side of the image -->
-                <div class="col-md-4" style="background-color: rgba(0, 0, 0, 0.5); padding: 20px; color: white; margin-top: 100px;">
-                    <h3>Submit Your Information</h3>
+            <div class="row justify-content-start">
+                <!-- Form Section -->
+                <div class="col-md-4 bg-dark text-white p-4 rounded shadow-lg">
+                    <h3>Register Your Account</h3>
 
-                    <!-- Display the welcome message if available -->
+                    <!-- Display Success or Error Message -->
                     {% if message %}
                     <div class="alert alert-success" role="alert">
                         {{ message }}
                     </div>
                     {% endif %}
 
-                    <!-- Submission Form -->
+                    <!-- Registration Form -->
                     <form method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
@@ -58,14 +60,15 @@
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
                         </div>
-                        <button type="submit" class="btn btn-outline-light">Submit</button>
+                        <button type="submit" class="btn btn-outline-light w-100">Register</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

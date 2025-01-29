@@ -38,3 +38,7 @@ def home(request):
             return render(request, 'home.html', {'error_message': 'Invalid username or password'})
 
     return render(request, 'home.html')
+
+
+def dashboard(request):
+    return render(request, 'dashboard.html')

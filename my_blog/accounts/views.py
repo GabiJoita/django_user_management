@@ -1,6 +1,6 @@
 # Import necessary modules
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User  # <-- This import goes here
+from .models import UserInfo  # <-- This import goes here
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
@@ -9,11 +9,20 @@ from django.contrib.auth import authenticate, login
 
 def index(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        # Logic for user registration goes here.
-        return render(request, 'index.html', {'message': 'User registered successfully!'})
-    return render(request, 'index.html')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if the username already exists
+        if UserInfo.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists!")
+        else:
+            # Save the new user
+            new_user = UserInfo(username=username, password=password)
+            new_user.save()
+            messages.success(request, "Registration successful!")
+            return redirect('home')  # Redirect to home page
+
+    return render(request, 'index.html')  # Render the index page
 
 
 # View for logging in users

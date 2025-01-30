@@ -14,4 +14,8 @@ Tech Stack:
 
  Preview:
  
-![App Screenshot](accounts/static/images/1.jpg)
+![App Screenshot](my_blog/accounts/static/images/1.jpg)
+![App Screenshot](my_blog/accounts/static/images/2.jpg)
+![App Screenshot](my_blog/accounts/static/images/3.jpg)
+
+

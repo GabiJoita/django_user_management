@@ -14,4 +14,4 @@ Tech Stack:
 
  Preview:
  
-![App Screenshot](accounts/static/site.jpg)
+![App Screenshot](accounts/static/images/1.jpg)

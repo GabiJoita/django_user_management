@@ -30,15 +30,12 @@
         </div>
     </nav>
 
-    <!-- Background Image Section -->
     <div style="background-image: url('{% static 'site.jpg' %}'); background-size: cover; height: 100vh; display: flex; align-items: center;">
         <div class="container">
             <div class="row justify-content-start">
-                <!-- Form Section -->
                 <div class="col-md-4 bg-dark text-white p-4 rounded shadow-lg">
                     <h3>Register Your Account</h3>
 
-                    <!-- Display Success or Error Message -->
                     {% if message %}
                     <div class="alert alert-success" role="alert">
                         {{ message }}
@@ -50,7 +47,6 @@
                     </div>
                     {% endif %}
 
-                    <!-- Registration Form -->
                     <form method="POST">
                         {% csrf_token %}
                         <div class="mb-3">

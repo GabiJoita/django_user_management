@@ -8,7 +8,6 @@ def index(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Check if the username already exists
         if UserInfo.objects.filter(username=username).exists():
             messages.error(request, "Username already exists!")
         else:
@@ -16,7 +15,7 @@ def index(request):
             new_user = UserInfo(username=username, password=password)
             new_user.save()
             messages.success(request, "Registration successful!")
-            return redirect('home')  # Redirect to home page
+            return redirect('home')
 
     return render(request, 'index.html')
 
@@ -26,13 +25,10 @@ def home(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        # Try to find the user in the database
         user = UserInfo.objects.filter(username=username, password=password).first()
 
         if user:
-            # If the user is found, login and redirect to a dashboard
-            # Here, you can implement a custom login system if necessary
-            return redirect('dashboard')  # Assuming you have a dashboard view
+            return redirect('dashboard')
 
         else:
             return render(request, 'home.html', {'error_message': 'Invalid username or password'})

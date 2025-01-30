@@ -11,7 +11,6 @@ def index(request):
         if UserInfo.objects.filter(username=username).exists():
             messages.error(request, "Username already exists!")
         else:
-            # Save the new user
             new_user = UserInfo(username=username, password=password)
             new_user.save()
             messages.success(request, "Registration successful!")
